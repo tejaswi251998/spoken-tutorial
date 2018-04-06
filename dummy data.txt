@@ -1,0 +1,16 @@
+ADMIN:
+USERS:
+user:preeti
+password:preetipreeti
+user:lohitha
+password:lohithalohitha
+user3:shravika
+password:shravikashravika
+user:varsha
+password:varshavarsha
+foss:f1
+tutorials:tut1,tut2,tut3,tut4,tut5,tut6,tut7,tut8,tut8,tut9,tut10
+assigned to user preeti
+foss:f2
+tutorials:tutorial1,tutorial2,tutorial3,tutorail4,tutorial5,tutorial6,tutorial7,tutorial8,tutorial9,tutorial10
+assigned to user lohitha

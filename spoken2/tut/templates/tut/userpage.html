@@ -1,0 +1,97 @@
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>User</title>
+    {%  load staticfiles %}
+<link href="{% static '/tutorial/css/bootstrap.min.css' %}" rel="stylesheet" />
+<script src="{% static '/tutorial/js/bootstrap.min.js' %}" rel="stylesheet" ></script>
+<script src="{%  static '/tutorial/js/jquery.min.js' %}" rel="stylesheet" ></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-4 text-center">
+                <h4><span class="glyphicon glyphicon-envelope"></span> {% for ud in udets %}{{ ud.email }}{% endfor %} </h4>
+            </div>
+            <div class="col-md-4 text-center">
+                <h4>Welcome {{ user.get_username }} </h4>
+            </div>
+            <div class="col-md-4">
+                <div style="float:right;"><h4><a href="{% url 'logout' %}" style="color:grey;"><strong>Log Out <span class="glyphicon glyphicon-log-out"></span></strong></a></h4></div>
+                </div>
+            </div>
+            <div class="row">
+                <hr/>
+                {% if f_name %}
+                <div class="col-md-12 col-md-6 col-md-offset-3">
+                    <div class="alert alert-default text-center" style="background-color:#f0f0f0; color:black;"><h4><strong>Total Amount:{{ am }}</strong></h4></div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <hr/>
+                <div class="alert alert-default text-center" role="alert"><h3><strong>Here are YOUR TUTORIALS</strong></h3></div>
+                <hr/>
+            </div>
+
+            <div class="row">
+                <div class="alert alert-default text-center" role="alert"><h5><strong>Foss Id: {% if f_name %} {{ f_name }} {% else %} No foss has been assigned yet. {% endif %}</strong></h5></div>
+                <hr/>
+            </div>
+            <div class="row" style="margin:20px;">
+
+                                                     {% if  messages %}
+                                                         <div class="alert alert-success" style="margin: 10px;">
+                                                             {% for message in messages %}
+                                                                 <li {% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}<strong></li>
+                                                             {% endfor %}
+                                                         </div>
+                                                     {% endif %}
+</div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                {% csrf_token %}
+                {% for i in Mainlist1 %}
+                    <div class="col-md-12 col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                              <div class="panel-heading text-center" style="background-color:#c7c7c7;">
+                                <h4 class="panel-title">
+                                <h4><strong>Tutorial : {{ i.b1 }}</strong></h4>
+                                </h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-6">
+                                    <form role="form" action="{% url 'userpg' %}" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <input type="hidden" name="usernm" value="{{ user.get_username }}">
+                                            <input type="hidden" name="tutname" value="{{ i.b1 }}">
+                                            <input type="hidden" name="fname" value="{% if f_name %}{{ f_name }}{% endif %}">
+                                            <input type="submit" class="btn btn-lg btn-primary btn-block" style="background-color:#6e6e6e; color:white;" name="s5" value="UPLOAD">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alert alert-default text-right" role="alert"><h4><strong>Submission Date: {{ i.b3 }} </strong></h4></div>
+                                    <div class="alert alert-default text-right" role="alert"><h4><strong>Deadline: {{ i.b4 }} </strong></h4></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+  <script src="{% static '/tutorial/js/jquery.min.js' %}"></script>
+  <script src="{%  static '/tutorial/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/tutorial/js/script.min.js' %}"></script>
+  <script src="{% static '/tutorial/js/bootstrap-carousel-swipe.js' %}"></script>
+</body>
+</html>

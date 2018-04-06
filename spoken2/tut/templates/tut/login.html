@@ -1,0 +1,222 @@
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login/signup</title>
+    {% csrf_token %}
+{%  load staticfiles %}
+
+<link href="{% static '/tut/css/bootstrap.min.css' %}" rel="stylesheet" />
+<script src="{% static '/tut/js/bootstrap.min.js' %}" rel="stylesheet" ></script>
+<script src="{%  static '/tut/js/jquery.min.js' %}" rel="stylesheet" ></script>
+</head>
+<body>
+<div class="container">
+<div class="alert alert-default text-center" style="margin-top:20px; background-color:black; color:white;" role="alert">
+<h3><strong>SPOKEN TUTORIAL</strong></h3>
+</div>
+
+ <div class="row">
+ <div class="row">
+    <div class="col-md-12 col-md-8 col-md-offset-2">
+    {% if  messages %}
+     <div class="alert alert-danger">
+         {% for message in messages %}
+             <li {% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+         {% endfor %}
+     </div>
+ {% endif %}
+ </div>
+ </div>
+ <div class="alert alert-default text-center">
+Admin? <button class="btn btn-default" data-toggle="modal" data-target="#modal1">click here</button>
+<div class="modal fade" id="modal1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header"><button class="close" data-dismiss="modal">&times;</button><h4>ADMIN</h4></div>
+<div class="modal-body"><form role="form" action="" method="POST">
+    {% csrf_token %}
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="center-block">
+                                                <img class="profile-img" src="{%  static 'tut/images/account-icon.png' %}" alt="" width="150px">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-md-10  col-md-offset-1 ">
+
+
+                                                    <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-user"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Username" name="user1" type="text" autofocus="" required>
+                                                    </div>
+                                                </div>
+
+
+                                                    <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-lock"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Password" name="pwd" type="password" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" name="s2" class="btn btn-lg btn-default btn-block" style="background-color:black; color:white;" value="Continue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+								</div>
+<div class="modal-footer"> <button class="btn btn-default" data-dismiss="modal">close</button></div>
+</div>
+</div>
+</div>
+</div>
+
+ </div>
+
+
+<div class="row">
+<div class="col-md-7">
+<div class="panel panel-default text-center" style="margin-top:20px;">
+<div class="panel-heading" ><h4><strong>USER LOGIN</strong></h4></div>
+<div class="panel-body">
+
+                                <form role="form" action="" method="POST">
+                                    {% csrf_token %}
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="center-block">
+                                                <img class="profile-img" src="{%  static 'tut/images/account-icon.png' %}" alt="" width="150px">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-md-10  col-md-offset-1 ">
+
+
+                                                    <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-user"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Username" name="user2" type="text" autofocus="" required>
+                                                    </div>
+                                                </div>
+
+
+                                                    <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-lock"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Password" name="pass2" type="password" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" name="s2" class="btn btn-lg btn-default btn-block" style="background-color:black; color:white;" value="Log_In">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+<div class="col-md-5">
+<div class="panel panel-default text-center" style="margin-top:20px;">
+<div class="panel-heading" ><h4><strong>USER SIGNUP</strong></h4></div>
+<div class="panel-body">
+
+                                <form role="form" action="" method="POST">
+                                    {% csrf_token %}
+
+
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="center-block">
+                                                <img class="profile-img" src="{% static 'tut/images/account-icon.png' %}" alt="" width="150px">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-md-10  col-md-offset-1 ">
+
+
+                                                    <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-user"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Enter Your Username" name="username" type="text" autofocus="" required>
+                                                    </div>
+                                                </div>
+
+
+												 <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-envelope"></i>
+                                                        </span>
+                                                    <input class="form-control" placeholder="Enter Your Email" name="email" type="email" autofocus="" required>
+                                                    </div>
+                                                </div>
+
+
+                                                    <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-lock"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Enter Your Password (min 8 length)" name="password" type="password" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" name="s2" class="btn btn-lg btn-default btn-block" style="background-color:black; color:white;" value="Sign_Up">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+<hr/>
+</div>
+
+
+
+  <script src="{% static '/tut/js/jquery.min.js' %}"></script>
+  <script src="{%  static '/tut/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/tut/js/script.min.js' %}"></script>
+  <script src="{% static '/tut/js/bootstrap-carousel-swipe.js' %}"></script>
+</body>
+</html>
